@@ -14,7 +14,7 @@ function App() {
     <>
       <Menu></Menu>
       {/* <Error404></Error404> */}
-      {/* <Inicio></Inicio> */}
+      {/*  <Inicio></Inicio>  */ }
       {/* <DetalleProducto></DetalleProducto> */}
       {/* <CrearProducto></CrearProducto> */}
       {/* <EditarProducto></EditarProducto> */}
