@@ -1,0 +1,8 @@
+{
+    "posts": [
+      { "id": 1, "nombreProducto": "cafe", "descripcion": "alguna descripcion...", "precio": "600", "categoria": "bebida caliente", "imagen": "" }
+    ],
+    "comments": [
+      { "id": 1, "nombreUsuario": "admin", "email": "admin@rollingcode.com", "password": "12345678" }
+    ]
+  }
