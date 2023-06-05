@@ -11,6 +11,7 @@ const CardProducto = () => {
         <Card.Body>
           <Card.Title>MOCHACCINO CANELA</Card.Title>
           <Card.Text>$1.740,00</Card.Text>
+          <textarea>Descripcion</textarea>
           <Button variant="primary">Ver detalle</Button>
         </Card.Body>
       </Card>

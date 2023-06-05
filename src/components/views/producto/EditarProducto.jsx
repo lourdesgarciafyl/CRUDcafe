@@ -44,6 +44,18 @@ const EditarProducto = () => {
           </Form.Select>
        
         </Form.Group>
+
+        <Form.Group className="mb-3" controlId="formDescripcionProdcuto">
+          <Form.Label>Descripción</Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="Ej: Cafe"
+            as="textarea"
+            rows={4}
+          />
+         
+        </Form.Group>
+        
         <Button variant="primary" type="submit">
           Guardar
         </Button>
