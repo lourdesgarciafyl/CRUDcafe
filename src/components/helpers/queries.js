@@ -42,7 +42,7 @@ export const consultarListaProductos = async () =>{
     }
 }
 
-export const consultarBorrarProductoa = async (id) =>{
+export const consultarBorrarProducto = async (id) =>{
     try{
         const respuesta = await fetch(`${URLProducto}/${id}`, {
             method: "DELETE"
