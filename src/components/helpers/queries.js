@@ -41,3 +41,15 @@ export const consultarListaProductos = async () =>{
         return null 
     }
 }
+
+export const consultarBorrarProductoa = async (id) =>{
+    try{
+        const respuesta = await fetch(`${URLProducto}/${id}`, {
+            method: "DELETE"
+        });
+        return respuesta
+    }catch(error){
+        console.log(error)
+        return null 
+    }
+}
