@@ -1,6 +1,18 @@
 import { Container, Row } from "react-bootstrap";
 import CardProducto from "./producto/CardProducto";
+import { useEffect, useState } from "react";
+import { consultarListaProductos } from "../helpers/queries";
+
 const Inicio = () => {
+  const [productos, setProductos] = useState([]);
+
+  useEffect(()=>{
+    consultarListaProductos().then((respuesta) => {
+      console.log(respuesta);
+      setProductos(respuesta);
+    })
+  }, [])
+
   return (
     <section className="mainSection">
       <img
@@ -12,10 +24,9 @@ const Inicio = () => {
         <h1 className="display-4">Nuestros Productos</h1>
         <hr />
         <Row>
-            <CardProducto></CardProducto>
-            <CardProducto></CardProducto>
-            <CardProducto></CardProducto>
-            <CardProducto></CardProducto>
+           {
+            productos.map((producto) => <CardProducto key={producto.id} producto={producto} setProductos={setProductos}></CardProducto>)
+            }
         </Row>
       </Container>
     </section>
@@ -23,3 +34,19 @@ const Inicio = () => {
 };
 
 export default Inicio;
+
+/*   const [productos, setProductos] = useState()
+
+  useEffect(() => {
+    consultarListaProductos().then((respuesta) =>{
+      setProductos(respuesta)
+    })
+  }, [])
+  
+         {productos.map((producto) =>(
+            <CardProducto 
+            key={producto.id}
+            producto={producto}
+            setProductos={setProductos}
+            ></CardProducto>
+          ))}*/

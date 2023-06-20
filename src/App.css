@@ -13,3 +13,12 @@
     height: 395px;
     width: 100%;
 }
+
+.imagenCard {
+    width: 100%;
+    height: 290px;
+    object-fit: cover;
+    object-position: 60%;
+    padding: 15px;
+    border-radius: 25px;
+  }

@@ -1,14 +1,42 @@
-import { useState } from "react";
+import { useEffect } from "react";
 import { Form, Button } from "react-bootstrap";
 import { useForm } from "react-hook-form";
+import {useParams} from "react-router-dom"
+import Swal from "sweetalert2";
+import { consultarProducto } from "../../helpers/queries";
+import { consultarEditarProducto } from "../../helpers/queries";
+import {useNavigate} from "react-router-dom"
 
 const EditarProducto = () => {
-  const[productosEditados, setProductosEditados] = useState([])
-  const {register, handleSubmit, formState: {errors}, reset} = useForm()
+  const {register, setValue, handleSubmit, formState: {errors}, reset} = useForm()
 
-  const onSubmit = (producto) =>{
-    setProductosEditados([...productosEditados, producto])
-    reset()
+  const {id} = useParams()
+  const navegacion = useNavigate()
+
+  useEffect(() =>{
+    consultarProducto(id).then((respuesta) =>{
+      if(respuesta){
+        console.log(`Cargar en el formulario`)
+        setValue(`nombreProducto`, respuesta.nombreProducto)
+        setValue(`precio`, respuesta.precio)
+        setValue(`imagen`, respuesta.imagen)
+        setValue(`categoria`, respuesta.categoria)
+        setValue(`descripcion`, respuesta.descripcion)
+      }else{
+        Swal.fire(`Ocurrió un error`, `Intente nuevamente más tarde`, `error`)
+      }
+    })
+  }, [])
+
+  const onSubmit = (productoEditado) =>{
+    consultarEditarProducto(productoEditado, id).then((respuesta) => {
+      if(respuesa && respuesta.status === 200){
+        Swal.fire(`Producto editado`, `El producto ${productoEditado.nombreProducto} fue editado correctamente`, `success`)
+       
+      }else{
+        Swal.fire(`Ocurrió un error`, `Intente nuevamente más tarde`, `error`)
+      }
+    })
   }
 
   return (
@@ -65,7 +93,7 @@ const EditarProducto = () => {
               }
             })}
           />
-            <Form.Text className="text-danger">{errors.precioProducto?.message}</Form.Text>
+            <Form.Text className="text-danger">{errors.precio?.message}</Form.Text>
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formImagen">
@@ -81,7 +109,7 @@ const EditarProducto = () => {
               }
             })}
           />
-            <Form.Text className="text-danger">{errors.imagenProducto?.message}</Form.Text>
+            <Form.Text className="text-danger">{errors.imagen?.message}</Form.Text>
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formPrecio">
@@ -97,7 +125,7 @@ const EditarProducto = () => {
             <option value="dulce">Dulce</option>
             <option value="salado">Salado</option>
           </Form.Select>
-          <Form.Text className="text-danger">{errors.categoriaProducto?.message}</Form.Text>
+          <Form.Text className="text-danger">{errors.categoria?.message}</Form.Text>
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formDescripcionProdcuto">
@@ -118,7 +146,7 @@ const EditarProducto = () => {
                 message: "Cantidad maxima de caracteres: 500"
               }})} 
           />
-              <Form.Text className="text-danger">{errors.descripcionProducto?.message}</Form.Text>
+              <Form.Text className="text-danger">{errors.descripcion?.message}</Form.Text>
         </Form.Group>
         
         <Button variant="primary" type="submit">

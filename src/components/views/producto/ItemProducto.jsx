@@ -1,6 +1,7 @@
 import { Button } from "react-bootstrap";
 import Swal from "sweetalert2";
 import { consultarBorrarProducto, consultarListaProductos } from "../../helpers/queries";
+import { Link } from "react-router-dom";
 
 const ItemProducto = ({producto, setProductos}) => {
   const borrarProducto = () =>{
@@ -48,7 +49,7 @@ const ItemProducto = ({producto, setProductos}) => {
       <td>{producto.imagen}</td>
       <td>{producto.categoria}</td>
       <td>
-        <Button className="btn btn-warning">Editar</Button>
+        <Link className="btn btn-warning" to={`/administrador/editar-producto/${producto.id}`}>Editar</Link>
         <Button variant="danger" onClick={borrarProducto}>
           Borrar
         </Button>

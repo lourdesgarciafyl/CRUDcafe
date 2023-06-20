@@ -1,44 +1,36 @@
 {
   "productos": [
     {
-      "id": 1,
-      "nombreProducto": "café",
-      "descripcion": "alguna descripcion...",
-      "precio": 350,
+      "nombreProducto": "Café con leche",
+      "precio": "500",
+      "imagen": "https://i.blogs.es/421374/cafe-con-leche2/1366_2000.jpg",
       "categoria": "bebida caliente",
-      "imagen": "https://images.pexels.com/photos/15017006/pexels-photo-15017006/free-photo-of-corazon-cafe-mano-capuchino.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+      "descripcion": "Café con leche caliente",
+      "id": 1
     },
     {
-      "id": 2,
-      "nombreProducto": "té",
-      "descripcion": "alguna descripcion...",
-      "precio": 350,
+      "nombreProducto": "Capuccino",
+      "precio": "600",
+      "imagen": "https://okdiario.com/img/2022/10/01/capuchino-655x368.jpg",
       "categoria": "bebida caliente",
-      "imagen": "https://images.pexels.com/photos/15017006/pexels-photo-15017006/free-photo-of-corazon-cafe-mano-capuchino.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+      "descripcion": "Capuccino italiano. 50 % cafe 50% leche.",
+      "id": 2
     },
     {
-      "id": 3,
-      "nombreProducto": "café 22",
-      "descripcion": "alguna descripcion...",
-      "precio": 350,
-      "categoria": "bebida caliente",
-      "imagen": "https://images.pexels.com/photos/15017006/pexels-photo-15017006/free-photo-of-corazon-cafe-mano-capuchino.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+      "nombreProducto": "Waffle con helado",
+      "precio": "900",
+      "imagen": "https://www.paulinacocina.net/wp-content/uploads/2019/10/waffles-dulces.jpg",
+      "categoria": "dulce",
+      "descripcion": "Waffles dulces acompañados de helado sabor americana.",
+      "id": 3
     },
     {
-      "nombreProducto": "café 22",
-      "descripcion": "alguna descripcion...",
-      "precio": 350,
-      "categoria": "bebida caliente",
-      "imagen": "https://images.pexels.com/photos/15017006/pexels-photo-15017006/free-photo-of-corazon-cafe-mano-capuchino.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "nombreProducto": "Croissant con jamon y queso",
+      "precio": "1200",
+      "imagen": "https://cdn.chefclub.tools/uploads/recipes/cover-thumbnail/62d4963c-f02a-4440-b475-a7f0b6da45f8_iYR1tsW.jpg",
+      "categoria": "salado",
+      "descripcion": "Croissant (medialuna) relleno de jamon y queso",
       "id": 4
-    },
-    {
-      "nombreProducto": "brownie",
-      "descripcion": "alguna descripcion...",
-      "precio": 380,
-      "categoria": "bebida caliente",
-      "imagen": "https://images.pexels.com/photos/15017006/pexels-photo-15017006/free-photo-of-corazon-cafe-mano-capuchino.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-      "id": 5
     }
   ],
   "usuarios": [

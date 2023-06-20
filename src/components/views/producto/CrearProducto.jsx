@@ -1,14 +1,20 @@
-import { useState } from "react";
 import { Form, Button } from "react-bootstrap";
+import Swal from "sweetalert2"
+import { consultarCrearProducto } from "../../helpers/queries";
 import { useForm } from "react-hook-form";
 
 const CrearProducto = () => {
-  const [productos, setProductos] = useState({})
   const {register, handleSubmit, formState: {errors}, reset} = useForm()
 
-  const onSubmit = (producto) =>{
-    setProductos([...productos, producto])
-    reset()
+  const onSubmit = (productoNuevo) =>{
+    consultarCrearProducto(productoNuevo).then((respuestaCreated)=>{
+      if(respuestaCreated && respuestaCreated.status === 201){
+        Swal.fire(`Producto creado`, `El producto ${productoNuevo.nombreProducto} fue creado correctamente`, `success`)
+        reset()
+      }else{
+         Swal.fire(`Ocurrió un error`, `Intente nuevamente más tarde`, `error`)
+      }
+    })
   }
 
   return (
@@ -65,7 +71,7 @@ const CrearProducto = () => {
               }
             })}
           />
-        <Form.Text className="text-danger">{errors.precioProducto?.message}</Form.Text>
+        <Form.Text className="text-danger">{errors.precio?.message}</Form.Text>
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formImagen">
@@ -81,7 +87,7 @@ const CrearProducto = () => {
               }
             })}
           />
-          <Form.Text className="text-danger">{errors.imagenProducto?.message}</Form.Text>
+          <Form.Text className="text-danger">{errors.imagen?.message}</Form.Text>
         </Form.Group>
        
         <Form.Group className="mb-3" controlId="formPrecio">
@@ -96,7 +102,7 @@ const CrearProducto = () => {
             <option value="dulce">Dulce</option>
             <option value="salado">Salado</option>
           </Form.Select>
-          <Form.Text className="text-danger">{errors.categoriaProducto?.message}</Form.Text>
+          <Form.Text className="text-danger">{errors.categoria?.message}</Form.Text>
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formDescripcionProdcuto">
@@ -117,7 +123,7 @@ const CrearProducto = () => {
                 message: "Cantidad maxima de caracteres: 500"
               }})} 
           />
-          <Form.Text className="text-danger">{errors.descripcionProducto?.message}</Form.Text>
+          <Form.Text className="text-danger">{errors.descripcion?.message}</Form.Text>
         </Form.Group>
 
         <Button variant="primary" type="submit">
