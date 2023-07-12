@@ -2,23 +2,35 @@ const URLUsuario = import.meta.env.VITE_API_USUARIO
 const URLProducto= import.meta.env.VITE_API_PRODUCTO
 
 export const login =  async (usuario) => {
-    console.log(URLUsuario);
     try{
-        const respuesta = await fetch(URLUsuario);
-        const listaUsuarios = await respuesta.json();
-        const usuarioBuscado = listaUsuarios.find((itemUsuario) => itemUsuario.email === usuario.email)
-        if(usuarioBuscado){
-            console.log("email encontrado")
-            if(usuarioBuscado.password === usuario.contrasenia){
-                return usuarioBuscado
-            }else{
-                console.log("contraseña incorrecta")
-                return null;
-            }
-        }else{
-            console.log("No se encontró el maiil")
-            return null;
+        const respuesta = await fetch(URLUsuario,{
+            method: "POST",
+            headers:{
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(usuario)
+        });
+        const datos = await respuesta.json();
+        return {
+            status: respuesta.status,
+            nombreUsuario: datos.nombreUsuario
         }
+       
+
+      //  const listaUsuarios = await respuesta.json();
+      //  const usuarioBuscado = listaUsuarios.find((itemUsuario) => itemUsuario.email === usuario.email)
+      //  if(usuarioBuscado){
+      //      console.log("email encontrado")
+      //      if(usuarioBuscado.password === usuario.contrasenia){
+      //          return usuarioBuscado
+      //      }else{
+      //          console.log("contraseña incorrecta")
+      //          return null;
+       //     }
+      //  }else{
+      //      console.log("No se encontró el maiil")
+      //      return null;
+      //  }
     } catch(error){
         console.log(error)
     }
